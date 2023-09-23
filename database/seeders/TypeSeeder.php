@@ -19,12 +19,19 @@ class TypeSeeder extends Seeder
       Schema::disableForeignKeyConstraints();
         Type::truncate();
       Schema::enableForeignKeyConstraints();
+
+      $types = [
+        'front-end',
+        'back-end',
+        'boolean-project',
+        'personal-project'
+      ];
         
-        for ($i=0; $i < 10; $i++) { 
-           Type::create([
-             'title'=> substr(fake()->word(),0,64),
-             'description'=> fake()->paragraph(),
-           ]);
+        foreach ($types as $type) {
+          Type::create([
+            'title'=> $type,
+            'description'=> fake()->paragraph(),
+          ]);
         }
     }
 }

@@ -19,12 +19,24 @@ class TechnologySeeder extends Seeder
         Schema::disableForeignKeyConstraints();
          Technology::truncate();
         Schema::enableForeignKeyConstraints();
+
+        $technologies = [
+            'HTML',
+            'CSS',
+            'JAVASCRIPT',
+            'BOOTSTRAP',
+            'TAILWIND',
+            'VUE',
+            'SASS',
+            'PHP',
+            'LARAVEL',
+        ];
         
-        for ($i=0; $i < 10; $i++) { 
+        foreach ($technologies as $technology) {
             Technology::create([
-             'title'=> substr(fake()->word(),0,64),
-             'description'=> fake()->paragraph(),
-           ]);
+                'title'=> $technology,
+                'description'=> fake()->paragraph(),
+            ]);
         }
     }
 }

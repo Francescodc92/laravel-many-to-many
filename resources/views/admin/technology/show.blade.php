@@ -40,10 +40,11 @@
   </div>
 </div>
 
-{{-- <div class="row">
+
+<div class="row">
   <div class="col bg-light">
     <h2>
-      Progetti collegati al tipo: 
+      Progetti collegati alla tecnologia: 
       <span class="fw-bold">{{ $technology->title }}</span> 
     </h2>
     <ul>
@@ -56,5 +57,5 @@
       @endforeach
     </ul>
   </div>
-</div> --}}
+</div>
 @endsection

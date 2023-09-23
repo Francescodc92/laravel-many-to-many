@@ -16,9 +16,10 @@ class TypeSeeder extends Seeder
      */
     public function run(): void
     {
-      Schema::disableForeignKeyConstraints();
+      Schema::withoutForeignKeyConstraints(function () {
         Type::truncate();
-      Schema::enableForeignKeyConstraints();
+      });
+
 
       $types = [
         'front-end',

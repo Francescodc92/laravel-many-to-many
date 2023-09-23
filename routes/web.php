@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TypeController;
-use App\Http\Admin\Controllers\TechnologyController;
+use App\Http\Controllers\Admin\TechnologyController;
 
 
 /*

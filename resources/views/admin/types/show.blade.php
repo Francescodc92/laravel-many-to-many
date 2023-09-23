@@ -4,7 +4,7 @@
 
 @section('main-content')
 <div class="col-12 mb-4">
-  <h1>Single type: {{ $type->title }}</h1>
+  <h1>Single Type: {{ $type->title }}</h1>
 </div>
 <div class="card  mb-3">
   <div class="row g-0">
@@ -13,7 +13,7 @@
               <h5 class="card-title">{{ $type->title }}</h5>
               <p>
                   <span class="fw-bold">
-                    descrizione:
+                    Descrizione:
                   </span> 
                   {{ $type->description }}
               </p>

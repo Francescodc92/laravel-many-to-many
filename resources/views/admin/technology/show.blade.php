@@ -13,16 +13,16 @@
               <h5 class="card-title">{{ $technology->title }}</h5>
               <p>
                   <span class="fw-bold">
-                    descrizione:
+                    Descrizione:
                   </span> 
                   {{ $technology->description }}
               </p>
               <div class="actions-container">
-                  <a href="{{ route('admin.types.edit', ['type'=>$technology->id]) }}" class="btn btn-warning mt-2">
+                  <a href="{{ route('admin.technologies.edit', ['technology'=>$technology->id]) }}" class="btn btn-warning mt-2">
                       Modifica
                   </a>
                   <form 
-                    action="{{ route('admin.types.destroy', ['type'=>  $technology->id]) }}"
+                    action="{{ route('admin.technologies.destroy', ['technology'=>  $technology->id]) }}"
                     method="POST"
                     class="d-inline-block mt-2"
                     onsubmit="return confirm('Sei sicuro di voler cancellare questo elemento?');"

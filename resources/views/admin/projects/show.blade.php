@@ -17,19 +17,19 @@
               <p class="card-text fw-bold">
                   <div class="">
                      <span class="fw-bold">
-                      collaborators:
+                      Collaborators:
                       </span>  {{ $project->collaborators }}
                   </div>
               </p>
               <p>
                 <span class="fw-bold">
-                  technologies: 
+                  Technologies: 
                 </span> 
                 {{ $project->technologies }}
               </p>
               <p>
                   <span class="fw-bold">
-                    type:
+                    Type:
                   </span> 
                   
                   @if ($project->type)  
@@ -40,7 +40,7 @@
               </p>
               <p>
                   <span class="fw-bold">
-                    descrizione:
+                    Descrizione:
                   </span> 
                   {{ $project->description }}
               </p>

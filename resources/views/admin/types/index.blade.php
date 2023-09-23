@@ -4,7 +4,7 @@
 
 @section('main-content')
     <div class="col-12 mb-4">
-      <h1>all Types</h1>
+      <h1>All Types</h1>
     </div>
     <div class="col-12 mb-4">
       <a href="{{ route('admin.types.create') }}" class="btn btn-success w-100">
@@ -17,9 +17,9 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">title</th>
-                <th scope="col">description</th>
-                <th scope="col">actions</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -30,7 +30,7 @@
                 <td>{{ $type->title }}</td>
                 <td>{{ $type->description }}</td>
                 <td>
-                  <a href="{{ route('admin.types.show',['type'=> $type->id]) }}" class="btn btn-primary mt-2">vedi</a>
+                  <a href="{{ route('admin.types.show',['type'=> $type->id]) }}" class="btn btn-primary mt-2">Vedi</a>
                   <a href="{{ route('admin.types.edit', ['type'=>$type->id]) }}" class="btn btn-warning mt-2">
                     Modifica
                   </a>

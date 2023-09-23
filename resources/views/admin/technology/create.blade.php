@@ -4,11 +4,11 @@
 
 @section('main-content')
 <div class="col-12 mb-4">
-  <h1>New Type</h1>
+  <h1>New Technology</h1>
 </div>
 <div class="row">
   <div class="col-12">
-    <form action="{{ route('admin.types.store') }}" method="POST">
+    <form action="{{ route('admin.technologies.store') }}" method="POST">
       @csrf
 
       <div class="mb-3">

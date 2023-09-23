@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Admin\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Technology;
 use App\Http\Requests\Technology\StoreTechnologyRequest;
 use App\Http\Requests\Technology\UpdateTechnologyRequest;
 //controller
 use App\Http\Controllers\Controller;
+//models
+use App\Models\Technology;
 
 class TechnologyController extends Controller
 {
@@ -15,7 +16,8 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        //
+        $technologies = Technology::all();
+        return view('admin.technology.index', compact('technologies'));
     }
 
     /**
@@ -23,7 +25,7 @@ class TechnologyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.technology.create');
     }
 
     /**
@@ -31,7 +33,10 @@ class TechnologyController extends Controller
      */
     public function store(StoreTechnologyRequest $request)
     {
-        //
+        $formDate = $request->validated();
+        $technology = Technology::create($formDate);
+
+       return redirect()->route('admin.technologies.show', ['technology'=> $technology->id]);
     }
 
     /**
@@ -39,7 +44,7 @@ class TechnologyController extends Controller
      */
     public function show(Technology $technology)
     {
-        //
+        return view('admin.technology.show', compact('technology'));
     }
 
     /**
@@ -63,6 +68,7 @@ class TechnologyController extends Controller
      */
     public function destroy(Technology $technology)
     {
-        //
+        $technology->delete();
+        return redirect()->route('admin.technologies.index');
     }
 }

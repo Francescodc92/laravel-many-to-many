@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('preview', 2048)->nullable();
             $table->string('collaborators', 255)->nullable();
             $table->text('description');
-            $table->text('technologies');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@
 
 @section('main-content')
   <div class="col-12 mb-4">
-    <h1>all Projects</h1>
+    <h1>All Projects</h1>
   </div>
     <div class="col-12 mb-4">
       <a href="{{ route('admin.projects.create') }}" class="btn btn-success w-100">
@@ -17,11 +17,11 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">title</th>
-                <th scope="col">collaborators</th>
-                <th scope="col">technologies</th>
-                <th scope="col">type</th>
-                <th scope="col">actions</th>
+                <th scope="col">Title</th>
+                <th scope="col">Collaborators</th>
+                <th scope="col">Technologies</th>
+                <th scope="col">Type</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -31,7 +31,13 @@
                 <th scope="row">{{ $project->id }}</th>
                 <td>{{ $project->title }}</td>
                 <td>{{ $project->collaborators }}</td>
-                <td>{{ $project->technologies }}</td>
+                <td>
+                  @foreach ($project->technologies as $technology)
+                    <span class="badge rounded-pill text-bg-primary">
+                      {{ $technology->title }}
+                    </span>
+                  @endforeach
+                </td>
                 <td>
                   @if ($project->type)
                    <a href="{{ route('admin.types.show',['type'=> $project->type->id]) }}">{{ $project->type->title }}</a>
@@ -41,7 +47,7 @@
                   @endif
                 </td>
                 <td>
-                  <a href="{{ route('admin.projects.show',['project'=> $project->id]) }}" class="btn btn-primary mt-2">vedi</a>
+                  <a href="{{ route('admin.projects.show',['project'=> $project->id]) }}" class="btn btn-primary mt-2">Vedi</a>
                   <a href="{{ route('admin.projects.edit', ['project'=>$project->id]) }}" class="btn btn-warning mt-2">
                     Modifica
                   </a>

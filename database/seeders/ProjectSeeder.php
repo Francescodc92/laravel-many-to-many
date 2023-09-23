@@ -28,7 +28,6 @@ class ProjectSeeder extends Seeder
                 'preview'=> fake()->imageUrl(400, 300),
                 'collaborators'=>substr(fake()->sentence(3),0,255),
                 'description'=> fake()->paragraph(),
-                'technologies'=> fake()->sentence(),
                 'type_id'=> $rendomType->id,
             ]);
 

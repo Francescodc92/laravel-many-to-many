@@ -24,9 +24,6 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.projects.index') }}">Projects</a>
-                                </li>
                             @else
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">Login</a>

@@ -26,7 +26,9 @@ return new class extends Migration
                 ->references('id') 
                 ->on('technologies')
                 ->onUpdate('cascade') 
-                ->onDelete('cascade');  
+                ->onDelete('cascade'); 
+            
+            $table->primary(['project_id', 'technology_id']);
         });
     }
 

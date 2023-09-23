@@ -9,7 +9,7 @@
 <div class="card  mb-3">
   <div class="row g-0">
       <div class="col-md-4 ">
-      <img src="{{ $project->preview }}" class="img-fluid rounded-start" alt="{{ $project->title }}">
+      <img src="{{ $project->preview }}" class="img-fluid rounded-start h-100" alt="{{ $project->title }}">
       </div>
       <div class="col-md-8">
           <div class="card-body ">
@@ -25,7 +25,11 @@
                 <span class="fw-bold">
                   Technologies: 
                 </span> 
-                {{ $project->technologies }}
+                @foreach ( $project->technologies as $technology)
+                  <span class="badge rounded-pill text-bg-primary">
+                    {{ $technology->title }}
+                  </span>
+                @endforeach
               </p>
               <p>
                   <span class="fw-bold">

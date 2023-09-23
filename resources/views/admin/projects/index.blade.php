@@ -31,7 +31,13 @@
                 <th scope="row">{{ $project->id }}</th>
                 <td>{{ $project->title }}</td>
                 <td>{{ $project->collaborators }}</td>
-                <td>{{ $project->technologies }}</td>
+                <td>
+                  @foreach ($project->technologies as $technology)
+                    <span class="badge rounded-pill text-bg-primary">
+                      {{ $technology->title }}
+                    </span>
+                  @endforeach
+                </td>
                 <td>
                   @if ($project->type)
                    <a href="{{ route('admin.types.show',['type'=> $project->type->id]) }}">{{ $project->type->title }}</a>

@@ -42,6 +42,7 @@ class ProjectController extends Controller
             'title'=>$formData['title'],
             'preview'=>$formData['preview'],
             'collaborators'=>$formData['collaborators'],
+            'type_id'=>$formData['type_id'],
             'description'=>$formData['description'],
         ]);
 
@@ -83,6 +84,7 @@ class ProjectController extends Controller
             'title'=>$formData['title'],
             'preview'=>$formData['preview'],
             'collaborators'=>$formData['collaborators'],
+            'type_id'=>$formData['type_id'],
             'description'=>$formData['description'],
         ]);
 

@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 //model
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 //helper
 use Illuminate\Support\Facades\Schema;
@@ -23,6 +24,7 @@ class ProjectSeeder extends Seeder
 
         for ($i=0; $i < 20; $i++) { 
             $rendomType = Type::inRandomOrder()->first();
+            
             Project::create([
                 'title'=> substr(fake()->sentence(3),0,100),
                 'preview'=> fake()->imageUrl(400, 300),

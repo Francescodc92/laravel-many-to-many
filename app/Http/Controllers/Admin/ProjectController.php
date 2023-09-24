@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 //model
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 
 class ProjectController extends Controller
 {
@@ -27,7 +28,8 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.projects.create',compact('types'));
+        $technologies = Technology::all();
+        return view('admin.projects.create',compact('types', 'technologies'));
     }
 
     /**
@@ -36,7 +38,18 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $formData = $request->validated();
-        $project = Project::create($formData);
+        $project = Project::create([
+            'title'=>$formData['title'],
+            'preview'=>$formData['preview'],
+            'collaborators'=>$formData['collaborators'],
+            'description'=>$formData['description'],
+        ]);
+
+        if(isset($formData['technologies'])){
+            foreach ($formData['technologies'] as $technologyId) {
+                $project->technologies()->attach($technologyId);
+            }
+        }
 
         return redirect()->route('admin.projects.show', ['project' => $project->id]);
     }
@@ -55,7 +68,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project','types'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project','types','technologies'));
     }
 
     /**
@@ -65,7 +79,19 @@ class ProjectController extends Controller
     {
 
         $formData = $request->validated();
-        $project->update($formData);
+        $project = Project::create([
+            'title'=>$formData['title'],
+            'preview'=>$formData['preview'],
+            'collaborators'=>$formData['collaborators'],
+            'description'=>$formData['description'],
+        ]);
+
+        if(isset($formData['technologies'])){
+            $project->technologies()->sync($formData['technologies']);
+        }
+        else{
+            $project->technologies()->detach();
+        }
          
         return redirect()->route('admin.projects.show', ['project' => $project->id]);
     }

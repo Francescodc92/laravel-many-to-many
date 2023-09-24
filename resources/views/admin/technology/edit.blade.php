@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('page-title', 'Edit Type')
+@section('page-title', 'Edit Technology')
 
 @section('main-content')
 <div class="col-12 mb-4">
-  <h1>Edit Type: {{ $type->title }}</h1>
+  <h1>Edit Technology: {{ $technology->title }}</h1>
 </div>
 
 <div class="row">
   <div class="col-12">
-    <form action="{{ route('admin.types.update', ['type' => $type->id]) }}" method="POST">
+    <form action="{{ route('admin.technologies.update', ['technology' => $technology->id]) }}" method="POST">
       @csrf
       @method('PUT')
 
@@ -27,7 +27,7 @@
           id="title" 
           name="title" 
           placeholder="Enter title..." 
-          value="{{ old('title', $type->title) }}"  
+          value="{{ old('title', $technology->title) }}"  
           required
         >
         @error('title')
@@ -44,7 +44,7 @@
             *
           </span>
         </label>
-        <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="3">{{ old('description', $type->description) }}</textarea>
+        <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="3">{{ old('description', $technology->description) }}</textarea>
         @error('description')
             <div class="alert alert-danger my-2">
                 {{ $message }}

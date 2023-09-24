@@ -12,16 +12,26 @@
                     <label for="email" class="form-label">
                         Email
                     </label>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email">
                 </div>
+                @error('email')
+                    <div class="alert alert-danger my-2">
+                        {{ $message }}
+                    </div>
+                @enderror
         
                 <!-- Password -->
                 <div class="mt-4">
                     <label for="password" class="form-label">
                         Password
                     </label>
-                    <input type="password" class="form-control id="password" name="password">
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
                 </div>
+                @error('password')
+                    <div class="alert alert-danger my-2">
+                        {{ $message }}
+                    </div>
+                @enderror
         
                 <!-- Remember Me -->
                 <div class="block mt-4">

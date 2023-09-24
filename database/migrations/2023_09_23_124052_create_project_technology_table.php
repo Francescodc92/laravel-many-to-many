@@ -28,7 +28,7 @@ return new class extends Migration
                 ->onUpdate('cascade') 
                 ->onDelete('cascade'); 
             
-            $table->primary(['project_id', 'technology_id']);
+            // $table->primary(['project_id', 'technology_id']); per far funzionare il seeder del projectTechnology 
         });
     }
 

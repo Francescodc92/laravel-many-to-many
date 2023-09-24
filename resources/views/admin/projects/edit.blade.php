@@ -76,43 +76,70 @@
         </div>
 
         <div class="mb-3 col-12 col-md-6">
-          <label for="technologies" class="form-label">
-            Technologies
-            <span class="text-danger">
-              *
-            </span>
+          <label for="collaborators" class="form-label">
+           types
           </label>
-          <input 
-            type="text" 
-            class="form-control @error('technologies') is-invalid @enderror" 
-            id="technologies" 
-            name="technologies"
-            value="{{ old('technologies', $project->technologies) }}"
-            placeholder="Enter value..." 
-            required
-          >
-          @error('technologies')
-            <div class="alert alert-danger my-2">
-                {{ $message }}
-            </div>
-          @enderror
+          <select class="form-select" id="type_id" name="type_id">
+            <option value="">Seleziona un tipo</option>
+            @foreach ($types as $type)
+              <option 
+                value="{{ $type->id }}"
+                {{ old('type_id', $project->type_id) ==  $type->id ? 'selected':'' }} 
+              >
+                {{ $type->title }}
+              </option>
+            @endforeach
+          </select>
         </div>
       </div>
 
-      <select class="form-select" id="type_id" name="type_id">
-        <option value="">Seleziona un tipo</option>
-        @foreach ($types as $type)
-          <option 
-            value="{{ $type->id }}"
-            {{ old('type_id', $project->type_id) ==  $type->id ? 'selected':'' }} 
-          >
-            {{ $type->title }}
-          </option>
-        @endforeach
-      </select>
-
-
-      <div class="mb-3">
+      <div class="mb-3 col-12 col-md-6">
+        <span class="d-block mb-1">
+          Tecnologie:
+        </span>
+        
+        <div class="btn-group flex-column flex-md-row" role="group" >
+          @foreach ($technologies as $technology)
+            <input 
+              type="checkbox" 
+              class="btn-check" 
+              name="technologies[]" 
+              id="technology-{{ $technology->id }}"
+              @if ($errors->any())
+                @if(
+                  in_array(
+                    $technology->id,
+                    old('technologies', [])
+                  )
+                )
+                  checked
+                @endif
+    
+              @elseif (
+                $project->technologies->contains($technology)
+              )
+                checked  
+              @endif
+              value="{{ $technology->id }}"
+            >
+  
+            <label class="btn btn-outline-primary" for="technology-{{ $technology->id }}">{{ $technology->title }}</label>
+          @endforeach
+        </div>
+        @error('technologies')
+              <div class="alert alert-danger my-2">
+                  {{ $message }}
+              </div>
+        @enderror
+        @error('technologies.*')
+              <div class="alert alert-danger my-2">
+                  {{ $message }}
+              </div>
+        @enderror
+      </div>
+      
+      
+       <div class="mb-3">
         <label for="description" class="form-label">
           Description
           <span class="text-danger">

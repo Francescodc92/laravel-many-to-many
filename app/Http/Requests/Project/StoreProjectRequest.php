@@ -29,8 +29,9 @@ class StoreProjectRequest extends FormRequest
             'preview'=>'nullable|max:2048',
             'collaborators'=>'nullable|max:255',
             'description'=>'required',
-            'technologies'=>'required',
             'type_id'=>'nullable|exists:types,id',
+            'technologies'=>'nullable|array',
+            'technologies.*'=>'exists:technologies,id'
         ];
     }
 
@@ -42,8 +43,9 @@ class StoreProjectRequest extends FormRequest
             'preview.max'=> 'il link dell\'immagine non può essere più lungo di 2048 caratteri spazi inclusi ',
             'collaborators.max'=> 'il contenuto dei collaboratori non può essere un testo più lungo di 255 caratteri spazi inclusi ',
             'description.required'=> 'la descrizione è obligatoria',
-            'technologies.required'=> 'la lista delle tecnologie utilizzate è obbligatoria',
             'type_id.exists'=> 'la categoria non esiste',
+            'technologies.array'=> 'il dato tecnologie non è una collezione di tecnologie quindi non è valido',
+            'technologies.*.exists'=> 'la tecnologia passata non esiste nella lista delle tecnologie' // chiedere ad alessio come creare un messaggio per la validazione 
         ];
     }
 }

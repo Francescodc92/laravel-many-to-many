@@ -10,7 +10,17 @@
   <div class="row g-0">
     <div class="col-md-4 ">
       @if ($project->preview)
-        <img src="{{ asset('storage/'. $project->preview) }}" class="img-fluid rounded-start h-100" alt="{{ $project->title }}">
+      <img 
+        src="{{ 
+          Str::startsWith($project->preview, 'https') 
+          ? 
+          $project->preview 
+          : 
+          asset('storage/'. $project->preview) 
+        }}" 
+        class="img-fluid rounded-start h-100" 
+        alt="{{ $project->title }}"
+      >
       @endif
     </div>
       <div class="col-md-8">

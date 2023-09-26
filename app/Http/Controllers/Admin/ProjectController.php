@@ -88,9 +88,26 @@ class ProjectController extends Controller
     {
 
         $formData = $request->validated();
-        $project = Project::create([
+
+        $preview_path = $project->preview;
+        if(isset( $formData['preview'])){
+
+            if($project->preview){
+                Storage::delete($project->preview);
+            }
+
+            $preview_path = Storage::put('uploads', $formData['preview']);
+        }
+        else if (isset($formData['remove_preview_img'])){
+            if($project->preview){
+                Storage::delete($project->preview);
+            }
+            $preview_path = null;
+        }
+
+        $project->update([
             'title'=>$formData['title'],
-            'preview'=>$formData['preview'],
+            'preview'=>$preview_path,
             'collaborators'=>$formData['collaborators'],
             'type_id'=>$formData['type_id'],
             'description'=>$formData['description'],

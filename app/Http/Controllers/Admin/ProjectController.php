@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Type;
 use App\Models\Technology;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -38,9 +39,16 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $formData = $request->validated();
+
+        $preview_path = null;
+        if (isset($formData['preview'])) {
+            $preview_path = Storage::put('uploads', $formData['preview']);
+        }
+
+
         $project = Project::create([
             'title'=>$formData['title'],
-            'preview'=>$formData['preview'],
+            'preview'=>$preview_path,
             'collaborators'=>$formData['collaborators'],
             'type_id'=>$formData['type_id'],
             'description'=>$formData['description'],
